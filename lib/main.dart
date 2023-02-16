@@ -73,6 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               email: "",
                               mobile: "",
                               gender: "male",
+                              buttonText: "Create",
                               callback: createPersonCallback,
                             )));
                 toggleDrawer(_scaffoldKey);

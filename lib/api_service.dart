@@ -34,12 +34,15 @@ Future updatePerson(
     required String mobile,
     required String gender}) async {
   final docUser = FirebaseFirestore.instance.collection("persons").doc(id);
-  await docUser.update({
+
+  final response = await docUser.update({
     "name": name,
     "email": email,
     "mobile": mobile,
     "gender": gender,
   });
+
+  return response;
 }
 
 Future deletePerson({required String id}) async {

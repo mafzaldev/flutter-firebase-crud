@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import '../utils.dart';
 
@@ -10,9 +9,10 @@ class PersonForm extends StatefulWidget {
       required this.email,
       required this.mobile,
       required this.gender,
-      required this.callback});
+      required this.callback,
+      required this.buttonText});
 
-  final String id, name, email, mobile, gender;
+  final String id, name, email, mobile, gender, buttonText;
   void Function(String, String, String, String, String) callback;
 
   @override
@@ -68,6 +68,7 @@ class PersonFormState extends State<PersonForm> {
                       ),
                       filled: true,
                       labelText: "Name",
+                      hintText: "John Doe",
                       hintStyle:
                           TextStyle(fontSize: 14, color: Colors.grey[800]),
                       fillColor: Colors.white70),
@@ -89,6 +90,7 @@ class PersonFormState extends State<PersonForm> {
                       ),
                       filled: true,
                       labelText: "Email",
+                      hintText: "johndoe@gmail.com",
                       hintStyle:
                           TextStyle(fontSize: 14, color: Colors.grey[800]),
                       fillColor: Colors.white70),
@@ -112,9 +114,11 @@ class PersonFormState extends State<PersonForm> {
                       ),
                       filled: true,
                       labelText: "Mobile",
+                      hintText: "923001234567",
                       hintStyle:
                           TextStyle(fontSize: 14, color: Colors.grey[800]),
                       fillColor: Colors.white70),
+                  maxLength: 12,
                   validator: (value) {
                     if (value == null ||
                         value.isEmpty ||
@@ -174,25 +178,23 @@ class PersonFormState extends State<PersonForm> {
                             gender);
 
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content: Text("Person created successfully!")),
+                          SnackBar(
+                              content: Text(
+                                  "Person ${widget.buttonText == "Create" ? "created" : "updated"} successfully!")),
                         );
-                        log(nameController.text);
-                        log(emailController.text);
-                        log(mobileController.text);
+                        nameController.clear();
+                        emailController.clear();
+                        mobileController.clear();
+                        Navigator.pop(context);
                       }
-                      nameController.clear();
-                      emailController.clear();
-                      mobileController.clear();
-                      Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
-                    child: const Text('Create',
-                        style: TextStyle(
+                    child: Text(widget.buttonText,
+                        style: const TextStyle(
                           fontFamily: 'Poppins',
                           fontSize: 18,
                           color: Colors.white,

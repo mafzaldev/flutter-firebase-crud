@@ -45,7 +45,7 @@ class ListItem extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                           fontSize: 18.0)),
                 ),
-                subtitle: Text("${person.email} | ${person.mobile}",
+                subtitle: Text("${person.email} | +${person.mobile}",
                     style: const TextStyle(
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
@@ -69,6 +69,7 @@ class ListItem extends StatelessWidget {
                                     email: person.email,
                                     mobile: person.mobile,
                                     gender: person.gender,
+                                    buttonText: "Update",
                                     callback: updatePersonCallback,
                                   )));
                     },
