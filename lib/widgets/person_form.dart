@@ -54,9 +54,10 @@ class PersonFormState extends State<PersonForm> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Create Record",
-                    style:
-                        TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+                Text(
+                    "${widget.buttonText == "Create" ? "Create" : "Update"} Record",
+                    style: const TextStyle(
+                        fontSize: 28, fontWeight: FontWeight.bold)),
                 const SizedBox(
                   height: 20,
                 ),

@@ -1,7 +1,9 @@
+import 'package:firebase_crud/screens/crud_manual.dart';
+import 'package:firebase_crud/screens/view_records_screen.dart';
+
 import 'widgets/person_form.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'screens/view_records_screen.dart';
 import 'utils.dart';
 import 'api_service.dart';
 
@@ -47,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(title: const Text("Firebase Integration")),
+      // body: const PersonsScreen(),
       body: const PersonsScreen(),
       drawer: Drawer(
         child: ListView(
@@ -54,6 +57,16 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             const SizedBox(
               height: 50,
+            ),
+            ListTile(
+              title: const Text('View Manual'),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CRUDManual()));
+                toggleDrawer(_scaffoldKey);
+              },
             ),
             ListTile(
               title: const Text('View Records'),
