@@ -55,7 +55,7 @@ class PersonFormState extends State<PersonForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                    "${widget.buttonText == "Create" ? "Create" : "Update"} Record",
+                    "${widget.buttonText == "Add Person" ? "Add" : "Update"} Person",
                     style: const TextStyle(
                         fontSize: 28, fontWeight: FontWeight.bold)),
                 const SizedBox(
@@ -181,7 +181,7 @@ class PersonFormState extends State<PersonForm> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                               content: Text(
-                                  "Person ${widget.buttonText == "Create" ? "created" : "updated"} successfully!")),
+                                  "Person ${widget.buttonText == "Add Person" ? "added" : "updated"} successfully!")),
                         );
                         nameController.clear();
                         emailController.clear();

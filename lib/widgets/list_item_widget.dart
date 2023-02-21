@@ -69,7 +69,7 @@ class ListItem extends StatelessWidget {
                                     email: person.email,
                                     mobile: person.mobile,
                                     gender: person.gender,
-                                    buttonText: "Update",
+                                    buttonText: "Update Person",
                                     callback: updatePersonCallback,
                                   )));
                     },

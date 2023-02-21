@@ -25,14 +25,13 @@ toggleDrawer(scaffoldKey) async {
 class Data {
   static List readData = [
     "Create function named readData() in your Flutter app.",
-    "Initialize a Cloud Firestore instance in that function app.You can do this by calling the instance() method on the Cloud Firestore class, as shown below:",
+    "Initialize a Cloud Firestore instance in that function app.You can do this by calling the instance() method on the Cloud Firestore class.",
+    "Extract the data from the QuerySnapshot object by mapping the data to your data model and converting to a list, as shown below:",
     """FirebaseFirestore.instance
     .collection('collection name')
     .snapshots()
     .map((snapshot) =>
         snapshot.docs.map((doc) => Person.fromJson(doc.data())).toList());""",
-    "Call the get() method on the reference to retrieve the data.",
-    "Extract the data from the QuerySnapshot object by mapping the data to your data model and converting to a list.",
     "Handle any errors that may occur."
   ];
 

@@ -1,5 +1,5 @@
-import 'package:firebase_crud/screens/crud_manual.dart';
-import 'package:firebase_crud/screens/view_records_screen.dart';
+import 'screens/crud_manual.dart';
+import 'screens/view_records_screen.dart';
 
 import 'widgets/person_form.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,6 @@ import 'api_service.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
   runApp(const MyApp());
 }
 
@@ -51,6 +50,23 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(title: const Text("Firebase Integration")),
       // body: const PersonsScreen(),
       body: const PersonsScreen(),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.person_add),
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => PersonForm(
+                        id: "",
+                        name: "",
+                        email: "",
+                        mobile: "",
+                        gender: "male",
+                        buttonText: "Add Person",
+                        callback: createPersonCallback,
+                      )));
+        },
+      ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -72,24 +88,6 @@ class _MyHomePageState extends State<MyHomePage> {
               title: const Text('View Records'),
               onTap: () {
                 Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Create Record'),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => PersonForm(
-                              id: "",
-                              name: "",
-                              email: "",
-                              mobile: "",
-                              gender: "male",
-                              buttonText: "Create",
-                              callback: createPersonCallback,
-                            )));
-                toggleDrawer(_scaffoldKey);
               },
             ),
           ],
